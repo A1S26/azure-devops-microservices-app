@@ -1,0 +1,25 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  backendImage: 'backend-app'
+  frontendImage: 'frontend-app'
+
+steps:
+
+- task: Docker@2
+  displayName: Build Backend Image
+  inputs:
+    command: build
+    Dockerfile: backend/Dockerfile
+    repository: $(backendImage)
+
+- task: Docker@2
+  displayName: Build Frontend Image
+  inputs:
+    command: build
+    Dockerfile: frontend/Dockerfile
+    repository: $(frontendImage)
