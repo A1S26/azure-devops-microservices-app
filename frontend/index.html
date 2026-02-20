@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps Microservices App</title>
+</head>
+<body>
+  <h1>Azure DevOps Microservices Project</h1>
+
+  <input id="item" placeholder="Enter item">
+  <button onclick="addItem()">Add</button>
+
+  <script>
+    async function addItem() {
+      const name = document.getElementById('item').value;
+      await fetch('http://localhost:5000/add', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name})
+      });
+      alert("Item Added");
+    }
+  </script>
+</body>
+</html>
